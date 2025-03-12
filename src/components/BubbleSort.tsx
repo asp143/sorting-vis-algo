@@ -7,6 +7,16 @@ const BubbleSort = () => {
   const [sorting, setSorting] = useState(false);
   const [sorted, setSorted] = useState(false);
   const [currentStep, setCurrentStep] = useState(-1);
+  const [timerRunning, setTimerRunning] = useState(false);
+  const [startTime, setStartTime] = useState<number | null>(null);
+  const [elapsedTime, setElapsedTime] = useState(0);
+  
+  // Format time in seconds with 2 decimal places
+  const formatTime = (timeMs: number): string => {
+    const seconds = Math.floor(timeMs / 1000);
+    const milliseconds = Math.floor((timeMs % 1000) / 10);
+    return `${seconds}.${milliseconds.toString().padStart(2, '0')}s`;
+  };
   
   // Generate random array
   const generateArray = () => {
@@ -14,6 +24,8 @@ const BubbleSort = () => {
     setArray(newArray);
     setSorted(false);
     setCurrentStep(-1);
+    setTimerRunning(false);
+    setElapsedTime(0);
   };
   
   // Bubble sort algorithm
@@ -22,6 +34,10 @@ const BubbleSort = () => {
     
     setSorting(true);
     setSorted(false);
+    
+    // Start the timer
+    setStartTime(Date.now());
+    setTimerRunning(true);
     
     const arr = [...array];
     const n = arr.length;
@@ -47,7 +63,27 @@ const BubbleSort = () => {
     setCurrentStep(-1);
     setSorting(false);
     setSorted(true);
+    
+    // Stop the timer
+    setTimerRunning(false);
   };
+  
+  // Timer effect
+  useEffect(() => {
+    let intervalId: number | null = null;
+    
+    if (timerRunning && startTime !== null) {
+      intervalId = window.setInterval(() => {
+        setElapsedTime(Date.now() - startTime);
+      }, 10); // Update every 10ms for smooth display
+    }
+    
+    return () => {
+      if (intervalId !== null) {
+        clearInterval(intervalId);
+      }
+    };
+  }, [timerRunning, startTime]);
   
   // Initialize with random array
   useEffect(() => {
@@ -85,6 +121,7 @@ const BubbleSort = () => {
       </div>
       
       <div className="info">
+        <p className="timer">Time: {formatTime(elapsedTime)}</p>
         {sorted && <p>Array is sorted!</p>}
         {sorting && <p>Sorting in progress...</p>}
       </div>
