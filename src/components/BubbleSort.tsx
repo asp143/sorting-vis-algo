@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import './BubbleSort.css';
 
 const BubbleSort = () => {
@@ -76,6 +77,11 @@ const BubbleSort = () => {
         <button onClick={bubbleSort} disabled={sorting || sorted}>
           Sort
         </button>
+        <Link to="/">
+          <button className="return-button">
+            Return to Main Menu
+          </button>
+        </Link>
       </div>
       
       <div className="info">

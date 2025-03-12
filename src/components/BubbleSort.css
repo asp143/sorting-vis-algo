@@ -53,6 +53,14 @@ button:disabled {
   cursor: not-allowed;
 }
 
+.return-button {
+  background-color: #fbbc05;
+}
+
+.return-button:hover {
+  background-color: #f9a825;
+}
+
 .info {
   margin-top: 20px;
   font-size: 18px;
