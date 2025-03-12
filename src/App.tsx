@@ -5,6 +5,8 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import BubbleSort from './components/BubbleSort'
 import MergeSort from './components/MergeSort'
+import QuickSort from './components/QuickSort'
+import HeapSort from './components/HeapSort'
 
 function Home() {
   return (
@@ -28,6 +30,8 @@ function Home() {
           <div className="algorithm-links">
             <Link to="/bubble-sort" className="nav-link">Bubble Sort</Link>
             <Link to="/merge-sort" className="nav-link">Merge Sort</Link>
+            <Link to="/quick-sort" className="nav-link">Quick Sort</Link>
+            <Link to="/heap-sort" className="nav-link">Heap Sort</Link>
             {/* Add more algorithm links as they become available */}
           </div>
         </div>
@@ -43,6 +47,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/bubble-sort" element={<BubbleSort />} />
         <Route path="/merge-sort" element={<MergeSort />} />
+        <Route path="/quick-sort" element={<QuickSort />} />
+        <Route path="/heap-sort" element={<HeapSort />} />
       </Routes>
     </Router>
   )
