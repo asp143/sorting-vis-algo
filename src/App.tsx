@@ -6,34 +6,31 @@ import './App.css'
 import BubbleSort from './components/BubbleSort'
 
 function Home() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
+    <div className="App">
+      <header className="App-header">
+        <h1>Sorting Algorithm Visualizer</h1>
         <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
+          Welcome to the Sorting Algorithm Visualizer! This interactive tool helps you understand how different sorting algorithms work through visual demonstrations.
         </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-      <div className="navigation">
-        <Link to="/bubble-sort" className="nav-link">Go to Bubble Sort</Link>
-      </div>
-    </>
+        <div className="features-section">
+          <h2>What You Can Do Here:</h2>
+          <ul className="feature-list">
+            <li>Watch step-by-step visualizations of popular sorting algorithms</li>
+            <li>Compare algorithm efficiency and behavior with different data sets</li>
+            <li>Learn about the time and space complexity of each algorithm</li>
+            <li>Control the visualization speed to better understand each step</li>
+          </ul>
+        </div>
+        <div className="algorithms-section">
+          <h2>Available Algorithms:</h2>
+          <div className="algorithm-links">
+            <Link to="/bubble-sort" className="nav-link">Bubble Sort</Link>
+            {/* Add more algorithm links as they become available */}
+          </div>
+        </div>
+      </header>
+    </div>
   )
 }
 
