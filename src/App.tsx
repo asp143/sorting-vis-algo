@@ -4,6 +4,7 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import BubbleSort from './components/BubbleSort'
+import MergeSort from './components/MergeSort'
 
 function Home() {
   return (
@@ -26,6 +27,7 @@ function Home() {
           <h2>Available Algorithms:</h2>
           <div className="algorithm-links">
             <Link to="/bubble-sort" className="nav-link">Bubble Sort</Link>
+            <Link to="/merge-sort" className="nav-link">Merge Sort</Link>
             {/* Add more algorithm links as they become available */}
           </div>
         </div>
@@ -40,6 +42,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/bubble-sort" element={<BubbleSort />} />
+        <Route path="/merge-sort" element={<MergeSort />} />
       </Routes>
     </Router>
   )
